@@ -1,0 +1,27 @@
+﻿<Window x:Class="PizzaShop.SizesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaShop"
+        mc:Ignorable="d"
+        Title="SizesWindow" Height="450" Width="800">
+    <Grid>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30">Размеры продуктов</Label>
+        <Label VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="17" Margin="60,0,0,170">Наименование</Label>
+        <TextBox x:Name="Name" Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="60,0,0,100" />
+        <Label VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="17" Margin="60,0,0,20">Граммы</Label>
+        <TextBox x:Name="Gramms" Width="200" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="60,50,0,0" PreviewTextInput="Gramms_PreviewTextInput" />
+        <Label VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="17" Margin="360,0,0,20">ID</Label>
+        <TextBox x:Name="ID" Width="50" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="360,50,0,0" PreviewTextInput="Gramms_PreviewTextInput" />
+        <DataGrid x:Name="Sizes" Width="200" Height="200" Margin="400,0,0,0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Width="30"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Граммы" Binding="{Binding Path=Gramms}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="Add" Width="120" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,150,0,0" Click="Add_Click">Добавить</Button>
+        <Button x:Name="Delete" Width="120" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="330,150,0,0" Click="Delete_Click">Удалить</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,46 @@
+﻿<Window x:Class="PizzaShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaShop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="25" Margin="150,10,0,0">Продукты</Label>
+        <ListBox x:Name="Products" Width="400" Height="300" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" MouseDoubleClick="Products_MouseDoubleClick">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}" Grid.Column="0" Grid.Row="0" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Type}" Grid.Column="0" Grid.Row="1"/>
+                        <TextBlock Text="{Binding Price}" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock Text="{Binding Size}" Grid.Column="1" Grid.Row="0"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="25" Margin="0,10,100,0">Корзина</Label>
+        <DataGrid x:Name="Cart" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Right" Width="330" Height="300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Цена" Width="50" Binding="{Binding Path=Price}"/>
+                <DataGridTextColumn Header="Размер" Width="50" Binding="{Binding Path=Size}"/>
+                <DataGridTextColumn Header="Тип" Width="50" Binding="{Binding Path=Type}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,300,15" FontSize="24">ID</Label>
+        <TextBox x:Name="ID" Width="50" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,250,20" PreviewTextInput="ID_PreviewTextInput"/>
+        <Button x:Name="Delete" Width="100" Height="20" Content="Удалить" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,120,25" Click="Delete_Click"/>
+        <Button x:Name="End" Width="100" Height="20" Content="Закрыть счет" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="200,0,0,25" Click="End_Click"/>
+    </Grid>
+</Window>

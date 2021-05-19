@@ -1,0 +1,17 @@
+﻿<Window x:Class="PizzaShop.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaShop"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="Sizes" Width="140" Height="30" FontSize="15" Margin="10,0" Click="Sizes_Click">Размеры продуктов</Button>
+            <Button x:Name="Types" Width="140" Height="30" FontSize="15" Margin="10,0" Click="Types_Click">Типы продуктов</Button>
+            <Button x:Name="Pizza" Width="120" Height="30" FontSize="15" Margin="10,0" Click="Pizza_Click">Продукты</Button>
+            <Button x:Name="Orders" Width="120" Height="30" FontSize="15" Margin="10,0" Click="Orders_Click">Заказы</Button>
+        </StackPanel>
+    </Grid>
+</Window>
