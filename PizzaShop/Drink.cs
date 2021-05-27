@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PizzaShop
 {
-    class Drink
+    public class Drink
     {
         public string ID { get; set; }
         public string Name { get; set; }

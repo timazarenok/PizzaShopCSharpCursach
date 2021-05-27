@@ -28,19 +28,13 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="25" Margin="0,10,100,0">Корзина</Label>
-        <DataGrid x:Name="Cart" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Right" Width="330" Height="300">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Path=ID}"/>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Цена" Width="50" Binding="{Binding Path=Price}"/>
-                <DataGridTextColumn Header="Размер" Width="50" Binding="{Binding Path=Size}"/>
-                <DataGridTextColumn Header="Тип" Width="50" Binding="{Binding Path=Type}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Label VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,300,15" FontSize="24">ID</Label>
-        <TextBox x:Name="ID" Width="50" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,250,20" PreviewTextInput="ID_PreviewTextInput"/>
-        <Button x:Name="Delete" Width="100" Height="20" Content="Удалить" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,120,25" Click="Delete_Click"/>
-        <Button x:Name="End" Width="100" Height="20" Content="Закрыть счет" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="200,0,0,25" Click="End_Click"/>
+        <StackPanel HorizontalAlignment="Right" Width="200" VerticalAlignment="Top" Margin="0,100,50,0" Orientation="Vertical">
+            <Button x:Name="Deserts" Width="200" Height="25" Content="Десерты" Click="Deserts_Click"/>
+            <Button x:Name="Pizza" Width="200" Height="25" Content="Пицца" Click="Pizza_Click"/>
+            <Button x:Name="Souses" Width="200" Height="25" Content="Соусы" Click="Souses_Click"/>
+            <Button x:Name="Drink" Width="200" Height="25" Content="Напитки" Click="Drink_Click"/>
+            <Button x:Name="Cart" Width="200" Height="25" Content="Корзина" Click="Cart_Click"/>
+        </StackPanel>
+        <Button x:Name="Exit" Width="120" Height="25" Margin="550,350,0,0" Content="Выход" Click="Exit_Click"/>
     </Grid>
 </Window>

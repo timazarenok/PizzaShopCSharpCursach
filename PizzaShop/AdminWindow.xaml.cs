@@ -47,5 +47,11 @@ namespace PizzaShop
             OrdersWindow window = new OrdersWindow();
             window.Show();
         }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Login window = new Login();
+            window.Show();
+            Close();
+        }
     }
 }

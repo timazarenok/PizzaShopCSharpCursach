@@ -13,13 +13,12 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding User}" Grid.Column="0" Grid.Row="0" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding Date}" Grid.Column="1" Grid.Row="0"/>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Telephone}" Grid.Row="1" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Date}" Grid.Row="2"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

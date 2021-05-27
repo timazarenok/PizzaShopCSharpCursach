@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,33 +17,19 @@ using System.Windows.Shapes;
 namespace PizzaShop
 {
     /// <summary>
-    /// Логика взаимодействия для OrdersWindow.xaml
+    /// Interaction logic for Cart.xaml
     /// </summary>
-    public partial class OrdersWindow : Window
+    public partial class Cart : Window
     {
-        public OrdersWindow()
+        public Cart()
         {
             InitializeComponent();
-            SetOrders();
+            SetCart();
         }
-        private void SetOrders()
+        public int IDOrder { get; set; }
+        private void SetCart()
         {
-            List<Order> orders = new List<Order>();
-            DataTable dt = SqlDB.Select("select * from Orders");
-            foreach (DataRow dr in dt.Rows)
-            {
-                orders.Add(new Order()
-                {
-                    ID = dr["id"].ToString(),
-                    Date = dr["date"].ToString(),
-                    Name = dr["name"].ToString(),
-                    Telephone = dr["telephone"].ToString(),
-                });
-            }
-            Orders.ItemsSource = orders;
-        }
-        private void SetOrderProducts(string IDOrder)
-        {
+            IDOrder = SqlDB.GetId($"select top 1 * from Orders order by id desc");
             List<Drink> products = new List<Drink>();
             DataTable dt = SqlDB.Select("" +
                 "select Order_Products.id, Products.[name], price, Sizes.[name] as size, Types.[name] as type from Order_Products " +
@@ -60,13 +47,35 @@ namespace PizzaShop
                     Type = dr["type"].ToString()
                 });
             }
-            Products.ItemsSource = products;
+            CartList.ItemsSource = products;
         }
-        private void Orders_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            Orders.SelectedItem = sender;
-            Order order = (Order)Orders.SelectedItem;
-            SetOrderProducts(order.ID);
+            if (SqlDB.Command($"delete from Order_Products where id={ID.Text}"))
+            {
+                MessageBox.Show("Удален");
+                SetCart();
+            }
+        }
+
+        private void ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void End_Click(object sender, RoutedEventArgs e)
+        {
+            if(SqlDB.Command($"Update Orders set [name]='{Name.Text}', [telephone]='{Telephone.Text}' where Orders.id={IDOrder}"))
+            {
+                MessageBox.Show("Заказ оформлен");
+            }
+        }
+
+        private void Telephone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9,-,+]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

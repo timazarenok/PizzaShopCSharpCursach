@@ -30,16 +30,17 @@ namespace PizzaShop
         }
         public int IDOrder { get; set; }
         public string Login { get; set; }
+        public List<Drink> products = new List<Drink>();
         public void CreateOrder()
         {
-            if(SqlDB.Command($"insert into Orders values({SqlDB.UserID}, (select getdate()))"))
+            if(SqlDB.Command($"insert into Orders values({SqlDB.UserID}, null, null, (select getdate()))"))
             {
                 IDOrder = SqlDB.GetId($"select top 1 * from Orders order by id desc");
             }
         }
         public void SetProducts()
         {
-            List<Drink> products = new List<Drink>();
+            products = new List<Drink>();
             DataTable dt = SqlDB.Select("" +
                 "select Products.id, Products.[name], price, Sizes.[name] as size, Types.[name] as type from Products " +
                 "join Sizes on Sizes.id = Products.size " +
@@ -57,42 +58,7 @@ namespace PizzaShop
             }
             Products.ItemsSource = products;
         }
-        private void SetCart()
-        {
-            List<Drink> products = new List<Drink>();
-            DataTable dt = SqlDB.Select("" +
-                "select Order_Products.id, Products.[name], price, Sizes.[name] as size, Types.[name] as type from Order_Products " +
-                "join Products on Products.id = Order_Products.product_id " +
-                "join Sizes on Sizes.id = Products.size " +
-                $"join Types on Types.id = Products.type where order_id={IDOrder}");
-            foreach (DataRow dr in dt.Rows)
-            {
-                products.Add(new Drink()
-                {
-                    ID = dr["id"].ToString(),
-                    Name = dr["name"].ToString(),
-                    Price = dr["price"].ToString(),
-                    Size = dr["size"].ToString(),
-                    Type = dr["type"].ToString()
-                });
-            }
-            Cart.ItemsSource = products;
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            if (SqlDB.Command($"delete from Order_Products where id={ID.Text}"))
-            {
-                MessageBox.Show("Удален");
-                SetCart();
-            }
-        }
-
-        private void ID_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
+        
 
         private void Products_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -100,14 +66,48 @@ namespace PizzaShop
             Drink product = (Drink)Products.SelectedItem;
             if(SqlDB.Command($"insert into Order_Products values ({IDOrder}, {product.ID})"))
             {
-                SetCart();
+                
             }
         }
 
-        private void End_Click(object sender, RoutedEventArgs e)
+        private void Deserts_Click(object sender, RoutedEventArgs e)
         {
-            CreateOrder();
-            SetCart();
+            List<Drink> deserts = products.FindAll(el => el.Type == "Десерт");
+            Products.ItemsSource = deserts;
+        }
+
+        private void Pizza_Click(object sender, RoutedEventArgs e)
+        {
+            List<Drink> pizzas = products.FindAll(el => el.Type == "Пицца");
+            Products.ItemsSource = pizzas;
+        }
+
+        private void Souses_Click(object sender, RoutedEventArgs e)
+        {
+            List<Drink> souses = products.FindAll(el => el.Type == "Соус");
+            Products.ItemsSource = souses;
+        }
+
+        private void Drink_Click(object sender, RoutedEventArgs e)
+        {
+            List<Drink> drinks = products.FindAll(el => el.Type == "Напиток");
+            Products.ItemsSource = drinks;
+        }
+
+        private void Cart_Click(object sender, RoutedEventArgs e)
+        {
+            Cart window = new Cart();
+            window.Show();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            if(SqlDB.Command($"delete from Orders where Orders.id={IDOrder}"))
+            {
+                Login window = new Login();
+                window.Show();
+                Close();
+            } 
         }
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lenovo\source\repos\PizzaShop\PizzaShop\obj\Debug\
+C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\
 PizzaShop
 none
 false
 DEBUG;TRACE
-C:\Users\Lenovo\source\repos\PizzaShop\PizzaShop\App.xaml
-7435696521
+C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\App.xaml
+8878745320
 
-17-707104820
+181841686144
 13-1505183044
-AdminWindow.xaml;OrdersWindow.xaml;TypesWindow.xaml;Login.xaml;MainWindow.xaml;PizzasWindow.xaml;SizesWindow.xaml;
+AdminWindow.xaml;Cart.xaml;OrdersWindow.xaml;TypesWindow.xaml;Login.xaml;MainWindow.xaml;PizzasWindow.xaml;SizesWindow.xaml;
 
 True
 

@@ -11,7 +11,7 @@ namespace PizzaShop
 {
     static class SqlDB
     {
-        private const string connectionString = @"Server=DESKTOP-VLADISL;Database=Pizza;Trusted_Connection=True;";
+        private const string connectionString = @"Server=DESKTOP-VAR3OC6\SQLEXPRESS;Database=Pizza;Trusted_Connection=True;";
         public static int UserID = 0;
         public static bool Command(string expression)
         {
