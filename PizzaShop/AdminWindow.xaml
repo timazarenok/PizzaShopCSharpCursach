@@ -13,6 +13,7 @@
             <Button x:Name="Pizza" Width="120" Height="30" FontSize="15" Margin="10,0" Click="Pizza_Click">Продукты</Button>
             <Button x:Name="Orders" Width="120" Height="30" FontSize="15" Margin="10,0" Click="Orders_Click">Заказы</Button>
         </StackPanel>
+        <Button x:Name="Info" Width="120" Height="25" Margin="550,0,0,350" Content="Справка" Click="Info_Click"/>
         <Button x:Name="Exit" Width="120" Height="25" Margin="550,350,0,0" Content="Выход" Click="Exit_Click"/>
     </Grid>
 </Window>

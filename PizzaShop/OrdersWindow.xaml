@@ -32,5 +32,6 @@
                 <DataGridTextColumn Header="Тип" Width="50" Binding="{Binding Path=Type}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="Excel" Width="120" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,20,0,0" Click="Excel_Click">Экоспорт в Excel</Button>
     </Grid>
 </Window>

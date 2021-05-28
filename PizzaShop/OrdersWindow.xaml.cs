@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace PizzaShop
 {
@@ -67,6 +69,28 @@ namespace PizzaShop
             Orders.SelectedItem = sender;
             Order order = (Order)Orders.SelectedItem;
             SetOrderProducts(order.ID);
+        }
+
+        private void Excel_Click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application ExcelApp = new Excel.Application();
+            ExcelApp.Application.Workbooks.Add(Type.Missing);
+            ExcelApp.Columns.ColumnWidth = 15;
+
+            ExcelApp.Cells[1, 1] = "Полное имя";
+            ExcelApp.Cells[1, 2] = "Тел. номер";
+            ExcelApp.Cells[1, 3] = "Дата";
+
+
+            var list = Orders.Items.OfType<Order>().ToList();
+
+            for (int j = 0; j < list.Count; j++)
+            {
+                ExcelApp.Cells[j + 2, 1] = list[j].Name;
+                ExcelApp.Cells[j + 2, 2] = list[j].Telephone;
+                ExcelApp.Cells[j + 2, 3] = list[j].Date;
+            }
+            ExcelApp.Visible = true;
         }
     }
 }

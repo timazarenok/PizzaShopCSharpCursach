@@ -56,3 +56,7 @@ C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\Pizza
 C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\PizzaShop.Properties.Resources.resources
 C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\PizzaShop.csproj.GenerateResource.cache
 C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\PizzaShop.csproj.CoreCompileInputs.cache
+C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\Interop.Office2013CustomActionsLib.dll
+C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\PizzaShop.csproj.ResolveComReference.cache
+C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\InfoWindow.g.cs
+C:\Users\timog\OneDrive\Desktop\PizzaShopCSharpCursach\PizzaShop\obj\Debug\InfoWindow.baml

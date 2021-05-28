@@ -1,0 +1,66 @@
+﻿<Window x:Class="PizzaShop.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzaShop"
+        mc:Ignorable="d"
+        Title="InfoWindow" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <Label FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top">Руководство по использованию</Label>
+                <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0">Добавление данных</Label>
+                <TextBlock TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Width="700">
+            Добавление данных в базу данных осуществляется с помощью форм и ввода данных в текстовые блоки.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавлвения в таблицу Users</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Для добавления в таблицу Users, нужно открыть окно Регистрации и ввести email и 
+            Вы автомотически зарегестрируетесь и войдете в систему
+            
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавлвения в таблицу Types</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Для добавления в таблицу Types, для начала нужно авторизоваться как Администратор и открыть окно относящееся к типам продуктов. 
+            Кнопка "Типы продуктов". После открытия окна в соответствующее текстовое поле для ввода ввести тип продукта нажать на кнопку "Добавит".
+            После чего тип продукта успешно добавиться в базу данных, для удаления нужно ввести ID и нажать на кнопку "Удалить"
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавлвения в таблицу Sizes</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Для добавления в таблицу Sizes для начала нужно авторизоваться как Администратор и открыть окно Размеры продуктов
+            Далее ввести название размера продукта и его объем или вес. После чего нажать на кнопку "Добавить" и данные будут успешно добавлены
+                    в БД, для удаления нужно ввести ID и нажать на кнопку "Удалить"
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавлвения в таблицу Products</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Добавление в таблицу Products осуществляется в окне Продукты, для того чтобы добавить продукт, надо ввести 
+                    название, цену и описание товара, а также выбрать размер и тип продукта, после чего нажать на кнопку "Добавить".
+                    Данные будут успешно добавлены в БД, для удаления надо ввести ID и нажать на кнопку "Удалить".
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Просмотр данных о Заказе</Bold>
+            <LineBreak/>
+            <LineBreak/>
+             Чтобы просмотреь заказы надо авторизоваться как Администратор и в открытом окне нажать на кнопку "Заказы".
+                    После чего откроется окно со списком заказов, чтобы просмотреть продукты привязанные к заказу, надо кликнуть
+                    дважды по заказу, который хотите просмотреть.
+                </TextBlock>
+                <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0">Экспорт отчетов</Label>
+                <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700">
+            Экспорт данных осуществляется в EXCEL. Чтобы сделать выписку отчета по заказам, надо нажать на кнопку "Заказы"
+            и Вам откроется соответствующее окно с отчетом. Далее надо нажать на кнопку "Экспорт в EXCEL" и программа автоматически откроет вам эту
+            таблицн в Excel.
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

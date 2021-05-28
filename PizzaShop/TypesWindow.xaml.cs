@@ -28,11 +28,11 @@ namespace PizzaShop
         }
         public void SetTypes()
         {
-            List<Type> types = new List<Type>();
+            List<Types> types = new List<Types>();
             DataTable dt = SqlDB.Select("select * from Types");
             foreach (DataRow dr in dt.Rows)
             {
-                types.Add(new Type()
+                types.Add(new Types()
                 {
                     ID = dr["id"].ToString(),
                     Name = dr["name"].ToString()
