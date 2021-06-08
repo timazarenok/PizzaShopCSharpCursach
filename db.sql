@@ -36,8 +36,17 @@ id int Identity(1,1) primary key,
 [date] date
 )
 
+create table Payment (
+id int Identity(1,1) primary key,
+[order_id] int references Orders(id) on delete cascade,
+[address] varchar(100),
+isCard bit,
+card_number varchar(16)
+)
+
 create table Order_Products(
 id int Identity(1,1) primary key,
 [order_id] int references Orders(id) on delete cascade,
 [product_id] int references Products(id) on delete cascade,
 )
+select * from Payment 

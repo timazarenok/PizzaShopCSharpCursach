@@ -68,7 +68,10 @@ namespace PizzaShop
         {
             if(SqlDB.Command($"Update Orders set [name]='{Name.Text}', [telephone]='{Telephone.Text}' where Orders.id={IDOrder}"))
             {
-                MessageBox.Show("Заказ оформлен");
+                if (SqlDB.Command($"insert into Payment values({IDOrder}, '{Address.Text}', {((bool)IsCard.IsChecked ? 1 : 0)}, '{CardNumber.Text}')"))
+                {
+                    MessageBox.Show("Заказ оформлен");
+                }
             }
         }
 
@@ -76,6 +79,13 @@ namespace PizzaShop
         {
             Regex regex = new Regex("[^0-9,-,+]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void CardNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            CardNumber.IsReadOnly = !(bool)IsCard.IsChecked;
+            Regex regex = new Regex("[^0-9,+]+"); 
+            e.Handled = regex.IsMatch(e.Text);                                                                                                                                                 
         }
     }
 }

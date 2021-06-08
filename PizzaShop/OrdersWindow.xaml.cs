@@ -25,12 +25,20 @@ namespace PizzaShop
         public OrdersWindow()
         {
             InitializeComponent();
+            DeleteUnUslessOrders();
             SetOrders();
+        }
+        private void DeleteUnUslessOrders()
+        {
+            if (SqlDB.Command($"delete from Orders where name is NULL and telephone is NULL"))
+            {
+                
+            }
         }
         private void SetOrders()
         {
             List<Order> orders = new List<Order>();
-            DataTable dt = SqlDB.Select("select * from Orders");
+            DataTable dt = SqlDB.Select("select * from Orders join Payment on Orders.id = Payment.order_id");
             foreach (DataRow dr in dt.Rows)
             {
                 orders.Add(new Order()
@@ -39,6 +47,8 @@ namespace PizzaShop
                     Date = dr["date"].ToString(),
                     Name = dr["name"].ToString(),
                     Telephone = dr["telephone"].ToString(),
+                    Address = dr["address"].ToString(),
+                    Payment = Convert.ToInt32(dr["isCard"]) == 1 ? dr["card_number"].ToString() : "Наличные"
                 });
             }
             Orders.ItemsSource = orders;
